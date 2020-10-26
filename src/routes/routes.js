@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-	res.send("index");
+	res.render("index", { active: { pages_home: true } });
 });
 
 router.get("/about", (req, res) => {
-	res.send("about");
+	res.render("about", { active: { pages_about: true } });
 });
 
 module.exports = router;
