@@ -3,8 +3,9 @@ const passport = require("passport");
 const router = express.Router();
 
 const User = require("../models/User");
+const { verifyNotAuthenticated } = require("../helpers/auth");
 
-router.get("/users/signin", (req, res) => {
+router.get("/users/signin", verifyNotAuthenticated, (req, res) => {
 	res.render("users/signin", { active: { users_signin: true } });
 });
 
@@ -17,7 +18,7 @@ router.post(
 	})
 );
 
-router.get("/users/signup", (req, res) => {
+router.get("/users/signup", verifyNotAuthenticated, (req, res) => {
 	res.render("users/signup", { active: { users_signup: true } });
 });
 
